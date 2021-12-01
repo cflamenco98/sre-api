@@ -1,0 +1,17 @@
+apiVersion: traefik.containo.us/v1alpha1
+kind: IngressRoute
+metadata:
+  name: sre-challenge-api-ingress
+  namespace: apps
+spec:
+  entryPoints:
+  - websecure
+  - web
+  routes:
+  - kind: Rule
+    match: Host(`cflamenco.capacitaciones.grupofarsiman.io`) && PathPrefix(`/ti/sre-challenge-api`)
+    middlewares:
+    - name: sre-challenge-api-ingress-path-strip
+    services:
+    - name: sre-challenge-api-service
+      port: 80

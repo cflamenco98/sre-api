@@ -1,0 +1,24 @@
+apiVersion: cert-manager.io/v1alpha2
+kind: ClusterIssuer
+metadata:
+  name: zerossl-prod
+spec:
+  acme:
+    server: https://acme.zerossl.com/v2/DV90
+    externalAccountBinding:
+      keyID: 5k9t1D7du1lrVsTce7D1Yw
+      keySecretRef:
+        name: zerossl-eab
+        key: secret
+      keyAlgorithm: HS256
+    privateKeySecretRef:
+      name: zerossl-prod
+    solvers:
+      - selector: {}
+        dns01:
+          route53:
+            region: us-east-1
+            accessKeyID: AKIAVXOEZXCK5OSGAWBT
+            secretAccessKeySecretRef:
+              name: aws-certbot-credentials
+              key: AWS_SECRET_ACCESS_KEY

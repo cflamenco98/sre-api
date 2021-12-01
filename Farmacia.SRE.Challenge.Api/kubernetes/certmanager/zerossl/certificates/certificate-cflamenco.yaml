@@ -1,0 +1,14 @@
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: cflamenco.capacitaciones.grupofarsiman.io
+  namespace: apps
+spec:
+  issuerRef:
+    name: zerossl-prod
+    kind: ClusterIssuer
+  secretName: tls-k8s-grupofarsiman-io
+  dnsNames:
+  - cflamenco.capacitaciones.grupofarsiman.io
+  privateKey:
+    rotationPolicy: Always

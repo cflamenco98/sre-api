@@ -1,0 +1,10 @@
+apiVersion: traefik.containo.us/v1alpha1
+kind: Middleware
+metadata:
+  name: sre-challenge-api-ingress-path-strip
+  namespace: apps
+spec:
+  stripPrefix:
+    forceSlash: false
+    prefixes:
+    - /ti/sre-challenge-api
