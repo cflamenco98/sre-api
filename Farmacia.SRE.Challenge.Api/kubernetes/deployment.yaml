@@ -19,7 +19,7 @@ spec:
         app: sre-challenge-api
     spec:
       containers:
-      - image: cflamenco99/app-sre-challenge-flamenco
+      - image: cflamenco99/app-sre-challenge-flamenco:#{Build.BuildId}#
         imagePullPolicy: Always
         name: sre-challenge-api
         resources:
@@ -28,3 +28,6 @@ spec:
             cpu: "500m"
         ports:
         - containerPort: 80
+      imagePullSecrets:
+      - name: dockerregistryflamenco
+        restartPolicy: Always
